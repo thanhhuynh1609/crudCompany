@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh sách Người Dùng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 800px;
+            text-align: center;
+        }
+        h2 {
+            color: #333;
+        }
+        .add-user {
+            display: inline-block;
+            margin: 10px 0;
+            padding: 10px 15px;
+            background-color: #28a745;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        .add-user:hover {
+            background-color: #218838;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        a.edit, a.delete {
+            padding: 5px 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            color: white;
+        }
+        a.edit {
+            background-color: #ffc107;
+        }
+        a.edit:hover {
+            background-color: #e0a800;
+        }
+        a.delete {
+            background-color: #dc3545;
+        }
+        a.delete:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Danh sách Người Dùng</h2>
+        <a class="add-user" href="/users/new">Thêm Người Dùng</a>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>Tên</th>
+                <th>Email</th>
+                <th>Hành động</th>
+            </tr>
+            <tr th:each="user : ${users}">
+                <td th:text="${user.id}"></td>
+                <td th:text="${user.name}"></td>
+                <td th:text="${user.email}"></td>
+                <td>
+                    <a class="edit" th:href="@{/users/edit/{id}(id=${user.id})}">Sửa</a>
+                    <a class="delete" th:href="@{/users/delete/{id}(id=${user.id})}" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
