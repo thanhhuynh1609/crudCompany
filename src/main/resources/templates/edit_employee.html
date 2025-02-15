@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sửa Nhân ViênViên</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa Nhân ViênViên</h1>
+        <form th:action="@{/employees/update}" method="post">
+            <input type="hidden" name="id" th:value="${employee.id}">
+            <label>Tên Nhân ViênViên:</label>
+            <input type="text" name="name" th:value="${employee.name}" required>
+            <input type="hidden" name="companyId" th:value="${employee.company.id}" />
+            <button type="submit">Cập Nhật</button>
+        </form>
+        <a th:href="@{'/companies/view/' + ${employee.company.id}}">Trở về</a>
+    </div>
+</body>
+</html>

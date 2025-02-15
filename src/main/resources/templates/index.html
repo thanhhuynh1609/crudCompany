@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Danh Sách Công Ty</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Danh sách công ty</h1>
+        <table>
+            <tr>
+                <th>Tên</th>
+                <th>Thao tác</th>
+            </tr>
+            <tr th:each="company : ${companies}">
+                <td th:text="${company.name}"></td>
+                <td>
+                    <a th:href="@{'/companies/view/' + ${company.id}}">Xem</a>
+                    <a th:href="@{'/companies/edit/' + ${company.id}}">Sửa</a>
+                    <a th:href="@{'/companies/delete/' + ${company.id}}" style="background: #dc3545;">Xóa</a>
+                </td>
+            </tr>
+        </table>
+        <form th:action="@{/companies/add}" method="post">
+            <label>Thêm công ty:</label>
+            <input type="text" name="name" required>
+            <button type="submit">Thêm</button>
+        </form>
+    </div>
+</body>
+</html>

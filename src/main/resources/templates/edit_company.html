@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Sửa Tên Công TyTy</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sửa Tên Công TyTy</h1>
+        <form th:action="@{/companies/update}" method="post">
+            <input type="hidden" name="id" th:value="${company.id}">
+            <label>Tên công ty:</label>
+            <input type="text" name="name" th:value="${company.name}" required>
+            <button type="submit">Cập Nhật</button>
+        </form>
+        <a href="/companies">Trở về</a>
+    </div>
+</body>
+</html>
