@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Sửa Tên Công TyTy</title>
+    <title>Sửa Tên Công Ty</title>
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Sửa Tên Công TyTy</h1>
+        <h1>Sửa Tên Công Ty</h1>
         <form th:action="@{/companies/update}" method="post">
             <input type="hidden" name="id" th:value="${company.id}">
             <label>Tên công ty:</label>
